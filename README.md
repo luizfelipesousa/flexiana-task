@@ -15,7 +15,7 @@ Write test:
     draw 2 cards from pile1.
     draw 3 cards from pile2.
 
-[flexiana-api-test-task](https://github.com/luizfelipesousa/flexiana-task/flexiana-api-test-task/postman)
+[flexiana-api-test-task]https://github.com/luizfelipesousa/flexiana-task/tree/main/flexiana-api-test-task/postman)
 
 ###### E2E
 https://www.gamesforthebrain.com/game/checkers/
@@ -33,6 +33,6 @@ Write test:
 - E2E test can be in any driver you want
 - Don't forget about assertions
 
-[flexiana-e2e-test-task](https://github.com/luizfelipesousa/flexiana-task/flexiana-e2e-test-task)
+[flexiana-e2e-test-task](https://github.com/luizfelipesousa/flexiana-task/tree/main/flexiana-e2e-test-task)
 
 *keep learning...*
