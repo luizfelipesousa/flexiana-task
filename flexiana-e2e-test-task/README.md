@@ -17,8 +17,3 @@ Go to the folder
 And run (To create a JUnit report):
 
 > `py -m behave --junit `
-
-
-##### DEMO
-
-<video src='https://github.com/luizfelipesousa/flexiana-task/blob/main/flexiana-task-demo.mp4' width=180/>
