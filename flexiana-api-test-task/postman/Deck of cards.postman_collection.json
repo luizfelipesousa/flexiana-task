@@ -1,0 +1,506 @@
+{
+	"info": {
+		"_postman_id": "a6cb79ec-7e72-4f29-af1e-8d6b1139c1e9",
+		"name": "Deck of cards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6627707"
+	},
+	"item": [
+		{
+			"name": "Create a deck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Sucessfull\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.success).to.be.true;\r",
+							"    pm.collectionVariables.set(\"deck_id\", jsonData.deck_id);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/new/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"new",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Shuffle the deck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Deck is shuffled\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.shuffled).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/shuffle/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"shuffle",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Draw 3 cards from deck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Draw 3 cards\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.cards.length).to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/draw/?count=3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"draw",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make 2 piles with 5 cards each from deck",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var url = pm.variables.get(\"url\") + \"/\" + pm.variables.get(\"deck_id\") + \"/draw/?count=5\";\r",
+							"\r",
+							"pm.sendRequest(url, function (err, response) {\r",
+							"    var jsonData = response.json();\r",
+							"    var cards = jsonData.cards;\r",
+							"    var pileCards = \"\";\r",
+							"    pm.environment.set(\"cards\", pileCards);\r",
+							"    \r",
+							"    for(var i = 0; i < 5; i++){\r",
+							"        if(i == 4) {\r",
+							"            pileCards += cards[i].code;\r",
+							"        } else {\r",
+							"            pileCards +=  cards[i].code + \",\";\r",
+							"        }\r",
+							"    }\r",
+							"    pm.environment.set(\"cards\", pileCards);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Making pile_1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.remaining).to.eql(44);\r",
+							"    pm.expect(jsonData.piles.pile_1.remaining).to.eql(5);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/pile/pile_1/add/?cards={{cards}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"pile",
+						"pile_1",
+						"add",
+						""
+					],
+					"query": [
+						{
+							"key": "cards",
+							"value": "{{cards}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make 2 piles with 5 cards each from deck Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var url = pm.variables.get(\"url\") + \"/\" + pm.variables.get(\"deck_id\") + \"/draw/?count=5\";\r",
+							"\r",
+							"pm.sendRequest(url, function (err, response) {\r",
+							"    var jsonData = response.json();\r",
+							"    var cards = jsonData.cards;\r",
+							"    var pileCards = \"\";\r",
+							"    pm.environment.set(\"cards\", pileCards);\r",
+							"    \r",
+							"    for(var i = 0; i < 5; i++){\r",
+							"        if(i == 4) {\r",
+							"            pileCards += cards[i].code;\r",
+							"        } else {\r",
+							"            pileCards +=  cards[i].code + \",\";\r",
+							"        }\r",
+							"    }\r",
+							"    pm.environment.set(\"cards\", pileCards);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Making pile_2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.remaining).to.eql(39);\r",
+							"    pm.expect(jsonData.piles.pile_2.remaining).to.eql(5);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/pile/pile_2/add/?cards={{cards}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"pile",
+						"pile_2",
+						"add",
+						""
+					],
+					"query": [
+						{
+							"key": "cards",
+							"value": "{{cards}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List the cards in pile1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Listing the cards in pile2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.piles.pile_1.cards.length).to.eql(5);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/pile/pile_1/list/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"pile",
+						"pile_1",
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List the cards in pile2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Listing the cards in pile2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.piles.pile_2.cards.length).to.eql(5);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/pile/pile_2/list/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"pile",
+						"pile_2",
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shuffle pile1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Pile is shuffled\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.success).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/pile/pile_1/shuffle/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"pile",
+						"pile_1",
+						"shuffle",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "draw 2 cards from pile1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Draw 2 cards from pile 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.piles.pile_1.remaining).to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/pile/pile_1/draw/random/?count=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"pile",
+						"pile_1",
+						"draw",
+						"random",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "draw 3 cards from pile2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Draw 3 cards from pile 2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.piles.pile_2.remaining).to.eql(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{deck_id}}/pile/pile_2/draw/random/?count=3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{deck_id}}",
+						"pile",
+						"pile_2",
+						"draw",
+						"random",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://deckofcardsapi.com/api/deck",
+			"type": "string"
+		},
+		{
+			"key": "deck_id",
+			"value": "new",
+			"type": "string"
+		},
+		{
+			"key": "cards",
+			"value": ""
+		}
+	]
+}

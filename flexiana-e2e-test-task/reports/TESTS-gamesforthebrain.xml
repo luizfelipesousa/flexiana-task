@@ -1,0 +1,16 @@
+<testsuite name="gamesforthebrain.E2E Game testing" tests="1" errors="0" failures="0" skipped="0" time="13.596424" timestamp="2022-08-28T21:45:39.004971" hostname="21LAPBRJ045DT8Q"><testcase classname="gamesforthebrain.E2E Game testing" name="Simple checkers game test" status="passed" time="13.596424"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Simple checkers game test
+    Given start a new game by restarting ... passed in 4.371s
+    When make your first move ... passed in 1.262s
+    And let computer move ... passed in 0.998s
+    When make your second move ... passed in 0.251s
+    And let computer take your piece ... passed in 2.815s
+    Then make sure your piece is taken ... passed in 0.276s
+    And start a new game ... passed in 3.623s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

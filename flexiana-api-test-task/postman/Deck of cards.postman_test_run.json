@@ -1,0 +1,388 @@
+{
+	"id": "ef4d4e6e-f291-4d81-bab5-f244ef7a2977",
+	"name": "Deck of cards",
+	"timestamp": "2022-08-27T19:54:56.176Z",
+	"collection_id": "6627707-a6cb79ec-7e72-4f29-af1e-8d6b1139c1e9",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 20,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "260fe8b6-121a-4f39-a3bd-ec8f8b17a2df",
+			"name": "Create a deck",
+			"url": "http://deckofcardsapi.com/api/deck/new/",
+			"time": 217,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Sucessfull": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Sucessfull": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				217
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Sucessfull": true
+				}
+			]
+		},
+		{
+			"id": "f556f9c9-5c2d-47b1-b9d8-c92e798f0a1a",
+			"name": "Shuffle the deck",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/shuffle/",
+			"time": 203,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Deck is shuffled": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Deck is shuffled": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				203
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Deck is shuffled": true
+				}
+			]
+		},
+		{
+			"id": "40bd42ee-ffb2-4bc5-9e2e-ceeaf6de17a0",
+			"name": "Draw 3 cards from deck",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/draw/?count=3",
+			"time": 202,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Draw 3 cards": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Draw 3 cards": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Draw 3 cards": true
+				}
+			]
+		},
+		{
+			"id": "f938eff8-3522-4609-9a78-60aee67f6885",
+			"name": "Make 2 piles with 5 cards each from deck",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/pile/pile_1/add/?cards=9S,0D,QD,7D,5H",
+			"time": 254,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Making pile_1": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Making pile_1": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				254
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Making pile_1": true
+				}
+			]
+		},
+		{
+			"id": "41f8eb5a-d78a-41c9-bc64-1073bc6aad82",
+			"name": "Make 2 piles with 5 cards each from deck Copy",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/pile/pile_2/add/?cards=9H,6C,5C,KS,AD",
+			"time": 201,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Making pile_2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Making pile_2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				201
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Making pile_2": true
+				}
+			]
+		},
+		{
+			"id": "be47b63f-ba25-420e-b381-9e22fb6dea51",
+			"name": "List the cards in pile1",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/pile/pile_1/list/",
+			"time": 232,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Listing the cards in pile2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Listing the cards in pile2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				232
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Listing the cards in pile2": true
+				}
+			]
+		},
+		{
+			"id": "8e1e7543-d748-4136-9285-3cb597fc161c",
+			"name": "List the cards in pile2",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/pile/pile_2/list/",
+			"time": 204,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Listing the cards in pile2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Listing the cards in pile2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				204
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Listing the cards in pile2": true
+				}
+			]
+		},
+		{
+			"id": "66005be5-fe80-422e-85ed-cbd1aa43e128",
+			"name": "shuffle pile1",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/pile/pile_1/shuffle/",
+			"time": 287,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Pile is shuffled": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Pile is shuffled": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				287
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Pile is shuffled": true
+				}
+			]
+		},
+		{
+			"id": "0834b06d-d672-41eb-9cbb-ad559e7f2df1",
+			"name": "draw 2 cards from pile1",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/pile/pile_1/draw/random/?count=2",
+			"time": 303,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Draw 2 cards from pile 1": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Draw 2 cards from pile 1": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				303
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Draw 2 cards from pile 1": true
+				}
+			]
+		},
+		{
+			"id": "e13e1e85-cb83-4368-8322-6dbaeffa4341",
+			"name": "draw 3 cards from pile2",
+			"url": "http://deckofcardsapi.com/api/deck/lbj7a0vhwrvl/pile/pile_2/draw/random/?count=3",
+			"time": 220,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Draw 3 cards from pile 2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Draw 3 cards from pile 2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				220
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Draw 3 cards from pile 2": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2323,
+	"collection": {
+		"requests": [
+			{
+				"id": "260fe8b6-121a-4f39-a3bd-ec8f8b17a2df",
+				"method": "GET"
+			},
+			{
+				"id": "f556f9c9-5c2d-47b1-b9d8-c92e798f0a1a",
+				"method": "GET"
+			},
+			{
+				"id": "40bd42ee-ffb2-4bc5-9e2e-ceeaf6de17a0",
+				"method": "GET"
+			},
+			{
+				"id": "f938eff8-3522-4609-9a78-60aee67f6885",
+				"method": "GET"
+			},
+			{
+				"id": "41f8eb5a-d78a-41c9-bc64-1073bc6aad82",
+				"method": "GET"
+			},
+			{
+				"id": "be47b63f-ba25-420e-b381-9e22fb6dea51",
+				"method": "GET"
+			},
+			{
+				"id": "8e1e7543-d748-4136-9285-3cb597fc161c",
+				"method": "GET"
+			},
+			{
+				"id": "66005be5-fe80-422e-85ed-cbd1aa43e128",
+				"method": "GET"
+			},
+			{
+				"id": "0834b06d-d672-41eb-9cbb-ad559e7f2df1",
+				"method": "GET"
+			},
+			{
+				"id": "e13e1e85-cb83-4368-8322-6dbaeffa4341",
+				"method": "GET"
+			}
+		]
+	}
+}

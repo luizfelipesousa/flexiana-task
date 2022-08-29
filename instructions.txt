@@ -1,0 +1,27 @@
+QA Test Engineers Test Task 
+Make a git repo with the solution for:
+API testing,
+http://deckofcardsapi.com/
+write test:
+Create a deck
+Shuffle the deck
+Draw 3 cards from deck
+Make 2 piles with 5 cards each from deck
+List the cards in pile1 and pile2
+shuffle pile1
+draw 2 cards from pile1
+draw 3 cards from pile2
+
+E2E
+https://www.gamesforthebrain.com/game/checkers/
+Write test:
+start a new game by restarting
+Make your first move
+Let computer move
+Make your second move
+Let computer take your piece
+Make sure your piece is taken
+Start a new game
+-you can use any python library
+-e2e test can be in any driver you want
+-don't forget about assertions
