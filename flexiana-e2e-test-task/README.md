@@ -17,4 +17,4 @@ To create a JUnit report:
 
 ##### DEMO
 
-<video src='https://github.com/luizfelipesousa/flexiana-taskflexiana-task-demo.mp4' width=180/>
+<video src='https://github.com/luizfelipesousa/flexiana-task/flexiana-task-demo.mp4' width=180/>
