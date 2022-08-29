@@ -10,7 +10,11 @@
 
 ##### HOW-TO RUN
 
-To create a JUnit report:
+Go to the folder
+
+> `cd flexiana-e2e-test-task `
+
+And run (To create a JUnit report):
 
 > `py -m behave --junit `
 
